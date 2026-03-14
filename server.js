@@ -9,13 +9,13 @@ if (cluster.isPrimary) {
     console.log(`Total CPUs : ${TOTAL_CPUS}`);
     const worker1 = fork('./workers/fab-series-worker1.js', {workerType: "worker1"});
     const worker2 = fork('./workers/fab-series-worker2.js', {workerType: "worker2"});
-    worker1.on("message", function (number) {
-        console.log(`Worker 1 : ${number}`);
+    // worker1.on("message", function (number) {
+    //     console.log(`Worker 1 : ${number}`);
         
-    });
-    worker2.on("message", function (number) {
-        console.log(`Worker 2 : ${number}`);
-    });
+    // });
+    // worker2.on("message", function (number) {
+    //     console.log(`Worker 2 : ${number}`);
+    // });
 
     cluster.on("online", (worker) => {
         console.log(`Message received from - ${worker.process.pid}`)
